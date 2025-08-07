@@ -3,10 +3,7 @@ import json
 ### Uses the Epicurious recipes from Kaggle: https://www.kaggle.com/datasets/hugodarwood/epirecipes?select=full_format_recipes.json
 
 def find_cuisine_from_categories(categories, supported_cuisines):
-    """
-    Scans a list of categories and returns the first one that matches
-    a known cuisine.
-    """
+    """Scans a list of categories and returns the first one that matches a known cuisine"""
     if not categories:
         return "unknown"
     for category in categories:
@@ -17,10 +14,8 @@ def find_cuisine_from_categories(categories, supported_cuisines):
     return "unknown"
 
 def create_knowledge_base(input_filepath, output_filepath='recipes_knowledge_base.json'):
-    """
-    Reads the Epicurious recipe dataset from its JSON file, formats it,
-    and saves it as a JSON knowledge base for the RAG chatbot.
-    """
+    """Reads the Epicurious recipe dataset from its JSON file, formats it,
+    and saves it as a JSON knowledge base for the RAG chatbot"""
     # A list of cuisines to look for in the 'categories' field of the dataset
     supported_cuisines = {
         'american', 'british', 'canadian', 'chinese', 'croatian', 'dutch', 
@@ -44,16 +39,14 @@ def create_knowledge_base(input_filepath, output_filepath='recipes_knowledge_bas
 
     all_recipes = []
     
-    # The dataset is a list of recipe dictionaries
     for recipe in data:
         try:
-            # Skip if essential fields are missing
             if not all(key in recipe for key in ['title', 'ingredients', 'directions']):
                 continue
 
             cuisine = find_cuisine_from_categories(recipe.get('categories'), supported_cuisines)
             
-            # Create the recipe object in the format our bot expects
+            # Create the recipe object in the format our chatbot expects
             formatted_recipe = {
                 "name": recipe['title'],
                 "ingredients": recipe['ingredients'],
@@ -61,7 +54,7 @@ def create_knowledge_base(input_filepath, output_filepath='recipes_knowledge_bas
                 "instructions": " ".join(recipe['directions'])
             }
 
-            # Add macronutrient information
+            # Add macronutrient information if there
             if 'calories' in recipe and recipe['calories'] is not None:
                 formatted_recipe['calories'] = recipe['calories']
             if 'protein' in recipe and recipe['protein'] is not None:
@@ -86,5 +79,4 @@ def create_knowledge_base(input_filepath, output_filepath='recipes_knowledge_bas
     except IOError as e:
         print(f"Error saving file: {e}")
 
-if __name__ == "__main__":
-    create_knowledge_base('full_format_recipes.json')
+create_knowledge_base('full_format_recipes.json')

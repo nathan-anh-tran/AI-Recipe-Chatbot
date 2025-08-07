@@ -6,6 +6,7 @@ import requests
 import spacy
 from sentence_transformers import SentenceTransformer, util
 import torch
+
 import warnings
 warnings.filterwarnings('ignore')
 
@@ -165,7 +166,6 @@ class Chatbot:
                 
                 if data['meals']:
                     recipe = random.choice(data['meals'])
-                    # F-strings are different in this file, so you have to use Python 3.11
                     recipe_url = f"https://www.themealdb.com/meal/{recipe['idMeal']}"
                     return f"I found a recipe with {ingredient}! How about {recipe['strMeal']}? You can see it here: {recipe_url}"
                 else:

@@ -17,9 +17,6 @@ import torch
 import warnings
 warnings.filterwarnings('ignore')
 
-# Insert your own API Key
-os.environ["GOOGLE_API_KEY"] = ...
-
 class Chatbot:
     def __init__(self, intents_file, knowledge_base_file, confidence_threshold=0.6):
         # Initializing intents classifier compnents

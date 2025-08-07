@@ -12,9 +12,6 @@ from langchain.agents import AgentExecutor, create_react_agent
 import warnings
 warnings.filterwarnings('ignore')
 
-# Insert your own API Key
-os.environ["GOOGLE_API_KEY"] = ...
-
 # TheMealDB cuisines
 SUPPORTED_CUISINES = {
     'american', 'british', 'canadian', 'chinese', 'croatian', 'dutch', 

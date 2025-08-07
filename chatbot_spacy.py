@@ -168,7 +168,8 @@ class Chatbot:
                 
                 if data['meals']:
                     recipe = random.choice(data['meals'])
-                    return f"I found a recipe with {ingredient}! How about {recipe['strMeal']}? You can see it here: {f'https://www.themealdb.com/meal/{recipe['idMeal']}'}"
+                    recipe_url = f"https://www.themealdb.com/meal/{recipe['idMeal']}"
+                    return f"I found a recipe with {ingredient}! How about {recipe['strMeal']}? You can see it here: {recipe_url}"
                 else:
                     return f"I couldn't find any recipes with the main ingredient: {ingredient}."
 
@@ -182,7 +183,8 @@ class Chatbot:
 
                 if data['meals']:
                     recipe = random.choice(data['meals'])
-                    return f"I found a great {cuisine.capitalize()} recipe for you! Try {recipe['strMeal']}. You can see it here: {f'https://www.themealdb.com/meal/{recipe['idMeal']}'}"
+                    recipe_url = f"https://www.themealdb.com/meal/{recipe['idMeal']}"
+                    return f"I found a great {cuisine.capitalize()} recipe for you! Try {recipe['strMeal']}. You can see it here: {recipe_url}"
                 else:
                     return f"I don't have any {cuisine} recipes right now, but I'm always learning new ones!"
             
@@ -202,7 +204,8 @@ class Chatbot:
                 data = response.json()
                 if data['meals']:
                     recipe = data['meals'][0]
-                    return f"Let's roll the dice! How about this one: {recipe['strMeal']}? You can see it here: {f'https://www.themealdb.com/meal/{recipe['idMeal']}'}"
+                    recipe_url = f"https://www.themealdb.com/meal/{recipe['idMeal']}"
+                    return f"Let's roll the dice! How about this one: {recipe['strMeal']}? You can see it here: {recipe_url}"
             except requests.exceptions.RequestException as e:
                 print(f"API Error: {e}")
                 return "I'm having trouble finding a random recipe right now."

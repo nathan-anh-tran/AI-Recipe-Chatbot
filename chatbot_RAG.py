@@ -13,9 +13,6 @@ from langchain.retrievers.multi_query import MultiQueryRetriever
 import warnings
 warnings.filterwarnings('ignore')
 
-# Insert your own API Key
-os.environ["GOOGLE_API_KEY"] = ...
-
 def load_recipes(filepath):
     try:
         with open(filepath, 'r') as f:
