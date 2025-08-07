@@ -11,8 +11,8 @@ This is a multi-version conversational AI chatbot that helps users discover reci
 
 ## Tech Stack
 
-* **Language:** Python 3.11
-* **NLU & Machine Learning:** LangChain, Sentence-Transformers (BERT), spaCy, Scikit-learn, PyTorch, FAISS, NLTK
+* **Languages:** Python 3.11
+* **Machine Learning:** LangChain, Sentence-Transformers (BERT), spaCy, Scikit-learn, PyTorch, FAISS, NLTK
 * **API Integration:** Requests, Google Gemini API, TheMealDB API
 
 ## Setup and Installation
