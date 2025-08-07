@@ -1,15 +1,23 @@
-# Python virtual environment
+# Python Virtual Environments
 venv/
 chatbot_env/
+.env
 
-# FAISS index directory
+# FAISS Index / Vector Database
 faiss_index/
+recipes_database/
 recipes_database_faiss/
 
+# Large Data Files
+full_format_recipes.json
+recipes_knowledge_base.json
+
 # Python cache files
+# These are temporary files created by Python.
 __pycache__/
 *.pyc
 
 # IDE/Editor specific files
+# These are user-specific settings and don't belong in the repo.
 .vscode/
 .idea/
