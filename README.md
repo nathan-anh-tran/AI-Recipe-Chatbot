@@ -34,13 +34,24 @@ This is a multi-version conversational AI chatbot that helps users discover reci
     pip install -r requirements.txt
     ```
 
-4.  **Set API Key:**
+4. **Build the Knowledge Base (for RAG models):**
+    Download the recipe dataset from Kaggle: Epicurious - Recipes with Rating and Nutrition.
+
+    Place the downloaded full_format_recipes.json file into your project folder.
+    
+    Run the ingestor script to create the knowledge base file:
+
+    ```python 
+    ingest_from_epicurious.py
+    ```
+
+5.  **Set API Key:**
     Set your Google API key as an environment variable.
     ```bash
     export GOOGLE_API_KEY="YOUR_API_KEY_HERE"
     ```
 
-5.  **Run the chatbot:**
+6.  **Run the chatbot:**
     ```bash
     python chatbot_final_ver.py
     ```
