@@ -1,0 +1,15 @@
+# Python virtual environment
+venv/
+chatbot_env/
+
+# FAISS index directory
+faiss_index/
+recipes_database_faiss/
+
+# Python cache files
+__pycache__/
+*.pyc
+
+# IDE/Editor specific files
+.vscode/
+.idea/

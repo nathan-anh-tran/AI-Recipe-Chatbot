@@ -1,0 +1,46 @@
+{
+  "recipes": [
+    {
+      "name": "Classic Scrambled Eggs",
+      "ingredients": ["eggs", "milk", "butter", "cheese", "salt", "pepper"],
+      "cuisine": "american",
+      "instructions": "1. Whisk eggs, milk, salt, and pepper. 2. Melt butter in a non-stick skillet over medium heat. 3. Pour in the egg mixture and cook, stirring gently, until the eggs are softly set. 4. Stir in cheese at the end and serve immediately."
+    },
+    {
+      "name": "Simple Chicken Tacos",
+      "ingredients": ["chicken", "tortillas", "cheese", "salsa", "lettuce", "lime"],
+      "cuisine": "mexican",
+      "instructions": "1. Cook and shred chicken. 2. Warm tortillas in a dry pan. 3. Assemble tacos with chicken, shredded lettuce, cheese, and salsa. 4. Serve with a wedge of lime."
+    },
+    {
+      "name": "Spaghetti Aglio e Olio",
+      "ingredients": ["pasta", "garlic", "olive oil", "chili flakes", "parsley", "cheese"],
+      "cuisine": "italian",
+      "instructions": "1. Cook spaghetti according to package directions. 2. While pasta cooks, gently sauté sliced garlic and chili flakes in olive oil until golden. 3. Drain pasta, reserving some pasta water. 4. Toss pasta with the garlic oil, a splash of pasta water, and fresh parsley. Top with grated cheese."
+    },
+    {
+      "name": "Garlic Butter Shrimp",
+      "ingredients": ["shrimp", "butter", "garlic", "lemon", "parsley"],
+      "cuisine": "french",
+      "instructions": "1. Melt butter in a pan over medium-high heat. 2. Sauté minced garlic until fragrant, about 1 minute. 3. Add shrimp and cook for 2-3 minutes until they turn pink. 4. Remove from heat, squeeze lemon juice over the top and garnish with fresh parsley."
+    },
+    {
+      "name": "Quick Chicken Stir-fry",
+      "ingredients": ["chicken", "broccoli", "bell pepper", "soy sauce", "rice", "ginger", "garlic"],
+      "cuisine": "chinese",
+      "instructions": "1. Sauté minced garlic and ginger. 2. Add sliced chicken and cook through. 3. Add broccoli and bell pepper, stir-frying until tender-crisp. 4. Stir in soy sauce. 5. Serve over cooked rice."
+    },
+    {
+      "name": "Greek Salad",
+      "ingredients": ["tomato", "cucumber", "red onion", "olives", "feta cheese", "olive oil", "lemon"],
+      "cuisine": "greek",
+      "instructions": "1. Chop tomato, cucumber, and red onion. 2. Combine chopped vegetables in a bowl with olives. 3. Crumble feta cheese over the top. 4. Drizzle with olive oil and a squeeze of fresh lemon juice."
+    },
+    {
+      "name": "Lentil Soup",
+      "ingredients": ["lentils", "carrots", "celery", "onion", "garlic", "vegetable broth"],
+      "cuisine": "indian",
+      "instructions": "1. Sauté chopped onion, carrots, and celery until soft. 2. Add garlic and cook for another minute. 3. Add lentils and vegetable broth. 4. Bring to a boil, then simmer for 25-30 minutes until lentils are tender."
+    }
+  ]
+}
