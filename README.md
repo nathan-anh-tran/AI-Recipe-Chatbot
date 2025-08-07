@@ -41,8 +41,8 @@ This is a multi-version conversational AI chatbot that helps users discover reci
     
     Run the ingestor script to create the knowledge base file:
 
-    ```python 
-    ingest_from_epicurious.py
+    ```bash
+    python ingest_from_epicurious.py
     ```
 
 5.  **Set API Key:**
