@@ -1,4 +1,3 @@
-# USE Python 3.11
 import os
 import json
 from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder

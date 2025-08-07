@@ -1,4 +1,3 @@
-### USE Python 3.11
 import json
 import random
 import re
