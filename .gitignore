@@ -13,11 +13,9 @@ full_format_recipes.json
 recipes_knowledge_base.json
 
 # Python cache files
-# These are temporary files created by Python.
 __pycache__/
 *.pyc
 
 # IDE/Editor specific files
-# These are user-specific settings and don't belong in the repo.
 .vscode/
 .idea/
