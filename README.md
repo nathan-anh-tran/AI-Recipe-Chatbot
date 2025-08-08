@@ -35,14 +35,14 @@ This is a multi-version conversational AI chatbot that helps users discover reci
     ```
 
 4. **Build the Knowledge Base (for RAG models):**
-    Download the recipe dataset from Kaggle: Epicurious - Recipes with Rating and Nutrition.
+    Download the recipe dataset from Kaggle: [Epicurious - Recipes with Rating and Nutrition](https://www.kaggle.com/datasets/hugodarwood/epirecipes?select=full_format_recipes.json).
 
     Place the downloaded full_format_recipes.json file into your project folder.
     
     Run the ingestor script to create the knowledge base file:
 
     ```bash
-    python ingest_from_epicurious.py
+    python recipe_ingestor.py
     ```
 
 5.  **Set API Key:**
