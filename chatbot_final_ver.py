@@ -103,31 +103,41 @@ class Chatbot:
             return None
         
         # Can change model if desired
-        llm = ChatGoogleGenerativeAI(model="gemini-2.5-pro", temperature=0.7)
+        llm = ChatGoogleGenerativeAI(model="gemini-1.5-flash", temperature=0.7)
 
-        # Utilizing a Multi-Query Retriever to generate multiple queries from the user input
-        # Used to build diverse responses
-        retriever_from_llm = MultiQueryRetriever.from_llm(
-            retriever=vector_store.as_retriever(), llm=llm
-        )
+        # # Utilizing a Multi-Query Retriever to generate diverse responses
+        # retriever_from_llm = MultiQueryRetriever.from_llm(
+        #     retriever=vector_store.as_retriever(), llm=llm
+        # )
         
-        # Formulates the response into a standalone question that the LLM can understand
-        contextualize_q_prompt = ChatPromptTemplate.from_messages([
-            ("system", "Given a chat history and the latest user question, formulate a standalone question. Do NOT answer the question, just reformulate it."),
-            MessagesPlaceholder("chat_history"),
-            ("user", "{input}"),
-        ])
-        history_aware_retriever = create_history_aware_retriever(llm, retriever_from_llm, contextualize_q_prompt)
+        # # Formulates the response into a standalone question that the LLM can understand
+        # contextualize_q_prompt = ChatPromptTemplate.from_messages([
+        #     ("system", "Given a chat history and the latest user question, formulate a standalone question. Do NOT answer the question, just reformulate it."),
+        #     MessagesPlaceholder("chat_history"),
+        #     ("user", "{input}"),
+        # ])
+        # history_aware_retriever = create_history_aware_retriever(llm, retriever_from_llm, contextualize_q_prompt)
         
-        # Main prompt for the recipe chatbot (only uses context to prevent making up fake info)
+        # # Main prompt for the recipe chatbot (only uses context to prevent making up fake info)
+        # qa_prompt = ChatPromptTemplate.from_messages([
+        #     ("system", "You are a recipe assistant. Answer the user's question based only on the following context:\n\n{context}"),
+        #     MessagesPlaceholder("chat_history"),
+        #     ("user", "{input}"),
+        # ])
+        # question_answer_chain = create_stuff_documents_chain(llm, qa_prompt)
+
+        # return create_retrieval_chain(history_aware_retriever, question_answer_chain)
+        # Simple retriever testing for latency
+        retriever = vector_store.as_retriever()
+        
         qa_prompt = ChatPromptTemplate.from_messages([
             ("system", "You are a recipe assistant. Answer the user's question based only on the following context:\n\n{context}"),
-            MessagesPlaceholder("chat_history"),
             ("user", "{input}"),
         ])
+        
         question_answer_chain = create_stuff_documents_chain(llm, qa_prompt)
 
-        return create_retrieval_chain(history_aware_retriever, question_answer_chain)
+        return create_retrieval_chain(retriever, question_answer_chain)
     
     def get_generic_response(self, intent):
         # Logic for random recipe
@@ -160,6 +170,7 @@ class Chatbot:
             return
         
         print("Welcome to the recipe chatbot! (Type 'quit' to exit)")
+        print("NOTE: Keep messages short for faster responses")
         chat_history = []
         while True:
             user_input = input("You: ")
@@ -167,6 +178,8 @@ class Chatbot:
                 print(f"Bot: {self.get_generic_response('goodbye')}")
                 return
             
+            start_time = time.time()
+
             intent = self.classify_intent(user_input)
 
             if intent in ['greet', 'goodbye', 'help', 'affirm', 'deny', 'fallback', 'get_random_suggestion']:
@@ -180,6 +193,8 @@ class Chatbot:
                 })
                 response = result.get('answer', 'Sorry, I had trouble finding an answer.')
             
+            end_time = time.time()
+            
             # Adds to chat history both messages
             chat_history.extend([
                 HumanMessage(content=user_input),
@@ -187,6 +202,7 @@ class Chatbot:
             ])
             
             print(f"Bot: {response}")
+            print(f"(Response generated in {end_time - start_time:.2f} seconds)\n")
 
 if not os.environ.get("GOOGLE_API_KEY"):
     print("ERROR: GOOGLE_API_KEY environment variable not set. Please set it before running.")
