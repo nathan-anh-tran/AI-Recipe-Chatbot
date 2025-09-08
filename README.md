@@ -5,7 +5,7 @@ This is a multi-version conversational AI chatbot that helps users discover reci
 ## Features
 
 * **Intent Classification:** Uses a Sentence-BERT model to understand user intents for both simple conversational queries and complex recipe searches.
-* **RAG System:** Leverages a powerful RAG system using the Gemini 2.5 Pro model through LangChain to answer questions based on a large recipe database of over 20,000 recipes.
+* **RAG System:** Leverages a powerful RAG system using the Gemini 1.5 Flash model through LangChain to answer questions based on a large recipe database of over 20,000 recipes.
 * **Advanced Retrieval:** Implements a Multi-Query Retriever to provide more accurate and diverse search results given similar user inputs.
 * **Conversational Memory:** Maintains chat history to understand and respond to follow-up questions intelligently.
 
@@ -72,6 +72,6 @@ I started this project because I was moving into my apartment for college and wa
 
 The first few chatbots grab recipes from TheMealDB's REST API, which is free but doesn't have many recipes. I wanted to expand the knowledge of the chatbot, so the final few chatbot implementations using RAG actually use data from the 'recipes_knowledge_base.json' file, which I downloaded from Kaggle's dataset: Epicurious - Recipes with Rating and Nutrition, and it has over 20k recipes.
 
-Most of the chatbots work by using an NLU core to classify the user's input intent, which is consistent until the chatbot_RAG.py. I tried to use an LLM (Gemini 2.5 Pro) instead to handle all the heavy work and generate responses that fit each user's intent seamlessly, but this was much slower and way more computationally expensive. For my final version, you can see the implementation where I have the NLU core for simple tasks like greeting the user or stating what the chatbot does, and the RAG system for retrieving specific recipes with queries including ingredients or cuisines. Each query that activates a simple request is almost instantaneous, but finding a recipe using the RAG system can take over 15-30 seconds.
+Most of the chatbots work by using an NLU core to classify the user's input intent, which is consistent until the chatbot_RAG.py. I tried to use an LLM (Gemini 1.5 Flash) instead to handle all the heavy work and generate responses that fit each user's intent seamlessly, but this was much slower and way more computationally expensive. For my final version, you can see the implementation where I have the NLU core for simple tasks like greeting the user or stating what the chatbot does, and the RAG system for retrieving specific recipes with queries including ingredients or cuisines. Each query that activates a simple request is almost instantaneous, but finding a recipe using the RAG system can take around 1 second with the simple retriever and around 3-4 seconds with the Multi-Query retriever.
 
 The recipe_ingestor.py is there because I needed a way to convert the Kaggle dataset into a useable format that the chatbot could use. The recipes.json also exists because of earlier stages of the project where I was testing the chatbot with a local recipes file instead of an API.
